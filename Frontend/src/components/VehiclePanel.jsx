@@ -1,6 +1,11 @@
 import React from "react";
 
-const VehiclePanel = ({ setVehiclePanel, setConfirmRidePanel }) => {
+const VehiclePanel = ({
+  setVehiclePanel,
+  setConfirmRidePanel,
+  fare,
+  setVehicleType,
+}) => {
   return (
     <div>
       <h4
@@ -9,10 +14,13 @@ const VehiclePanel = ({ setVehiclePanel, setConfirmRidePanel }) => {
       >
         <i className="text-3xl text-gray-300 ri-arrow-down-wide-line"></i>
       </h4>
+
       <h2 className="text-2xl font-semibold mb-5">Choose a vehicle</h2>
+
       <div
         onClick={() => {
           setConfirmRidePanel(true);
+          setVehicleType("car");
         }}
         className="flex items-center justify-between mb-2 w-full p-3 border-2 border-white active:border-black rounded-lg"
       >
@@ -32,9 +40,16 @@ const VehiclePanel = ({ setVehiclePanel, setConfirmRidePanel }) => {
             Affordable car rides.
           </p>
         </div>
-        <h4 className="font-semibold text-lg">₹100</h4>
+        <h4 className="font-semibold text-lg">₹{fare.car}</h4>
       </div>
-      <div className="flex items-center justify-between mb-2 w-full p-3 border-2 border-white active:border-black rounded-lg">
+
+      <div
+        onClick={() => {
+          setConfirmRidePanel(true);
+          setVehicleType("moto");
+        }}
+        className="flex items-center justify-between mb-2 w-full p-3 border-2 border-white active:border-black rounded-lg"
+      >
         <img
           className="h-16"
           src="https://www.uber-assets.com/image/upload/f_auto,q_auto:eco,c_fill,h_368,w_552/v1649231091/assets/2c/7fa194-c954-49b2-9c6d-a3b8601370f5/original/Uber_Moto_Orange_312x208_pixels_Mobile.png"
@@ -51,9 +66,16 @@ const VehiclePanel = ({ setVehiclePanel, setConfirmRidePanel }) => {
             Affordable bike rides.
           </p>
         </div>
-        <h4 className="font-semibold text-xl">₹100</h4>
+        <h4 className="font-semibold text-xl">₹{fare.moto}</h4>
       </div>
-      <div className="flex items-center justify-between mb-2 w-full p-3 border-2 border-white active:border-black rounded-lg">
+
+      <div
+        onClick={() => {
+          setConfirmRidePanel(true);
+          setVehicleType("auto");
+        }}
+        className="flex items-center justify-between mb-2 w-full p-3 border-2 border-white active:border-black rounded-lg"
+      >
         <img
           className="h-16"
           src="https://www.uber-assets.com/image/upload/f_auto,q_auto:eco,c_fill,h_368,w_552/v1648431773/assets/1d/db8c56-0204-4ce4-81ce-56a11a07fe98/original/Uber_Auto_558x372_pixels_Desktop.png"
@@ -70,7 +92,7 @@ const VehiclePanel = ({ setVehiclePanel, setConfirmRidePanel }) => {
             Affordable auto rides.
           </p>
         </div>
-        <h4 className="font-semibold text-xl">₹100</h4>
+        <h4 className="font-semibold text-xl">₹{fare.auto}</h4>
       </div>
     </div>
   );

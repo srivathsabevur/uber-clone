@@ -1,6 +1,6 @@
 import React from "react";
 
-const WaitingForDriver = ({ setWaitingForDriver }) => {
+const WaitingForDriver = ({ setWaitingForDriver, ride }) => {
   return (
     <div>
       <h4
@@ -16,9 +16,14 @@ const WaitingForDriver = ({ setWaitingForDriver }) => {
           alt=""
         />
         <div className="text-right">
-          <h2 className="text-lg font-medium">Name of the driver</h2>
-          <h4 className="text-xl font-semibold -mt-1 -mb-1">KA42 F1234</h4>
+          <h2 className="text-lg font-medium capitalize">
+            {ride?.captain?.fullname.firstname}
+          </h2>
+          <h4 className="text-xl font-semibold -mt-1 -mb-1">
+            {ride?.captain?.vehicle.plate}
+          </h4>
           <p className="text-sm text-gray-600">Maruthi Suzuki Alto</p>
+          <h1 className="text-2xl font-semibold -mt-1">{ride?.otp}</h1>
         </div>
       </div>
       <div className="flex gap-4 justify-between items-center flex-col ">
@@ -27,24 +32,20 @@ const WaitingForDriver = ({ setWaitingForDriver }) => {
             <i className="text-lg ri-map-pin-2-fill"></i>
             <div>
               <h3 className="text-lg font-medium ">56/7854-H</h3>
-              <p className="text-sm text-gray-600 -mt-1">
-                Holeraste,Ramanagaram
-              </p>
+              <p className="text-sm text-gray-600 -mt-1">{ride?.pickup}</p>
             </div>
           </div>
           <div className="flex items-center gap-5 p-3 border-b-2 border-gray-200">
             <i className="text-lg ri-map-pin-user-line"></i>
             <div>
               <h3 className="text-lg font-medium ">56/7854-H</h3>
-              <p className="text-sm text-gray-600 -mt-1">
-                Holeraste,Ramanagaram
-              </p>
+              <p className="text-sm text-gray-600 -mt-1">{ride?.destination}</p>
             </div>
           </div>
           <div className="flex items-center gap-5 p-3 border-b-2 border-gray-200">
             <i className="text-lg ri-money-rupee-circle-fill"></i>
             <div>
-              <h3 className="text-lg font-medium ">₹192.69</h3>
+              <h3 className="text-lg font-medium ">₹{ride?.fare}</h3>
               <p className="text-sm text-gray-600 -mt-1">Cash,Cash</p>
             </div>
           </div>

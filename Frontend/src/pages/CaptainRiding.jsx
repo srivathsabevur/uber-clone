@@ -1,10 +1,14 @@
 import React, { useRef, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import FinishRide from "../components/FinishRide";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
+import LiveTracking from "../components/LiveTracking";
 
 const CaptainRiding = () => {
+  const location = useLocation();
+  const { ride } = location.state;
+
   const [finishRide, setFinishRide] = useState(false);
 
   const finishRideRef = useRef(null);
@@ -37,10 +41,7 @@ const CaptainRiding = () => {
         </Link>
       </div>
       <div className="h-4/5">
-        <img
-          className="h-full w-full object-cover"
-          src="https://miro.medium.com/v2/resize:fit:1400/0*gwMx05pqII5hbfmX.gif"
-        />
+        <LiveTracking />
       </div>
 
       <div
@@ -62,7 +63,7 @@ const CaptainRiding = () => {
         ref={finishRideRef}
         className="fixed w-full z-10 bottom-0 px-3 py-6 pt-12 translate-y-full bg-white  rounded-t-lg"
       >
-        <FinishRide setFinishRide={setFinishRide} />
+        <FinishRide setFinishRide={setFinishRide} ride={ride} />
       </div>
     </div>
   );
